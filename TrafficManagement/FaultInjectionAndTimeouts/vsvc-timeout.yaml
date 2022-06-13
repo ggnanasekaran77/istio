@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: httpbin
+  namespace: default
+
+spec:
+  gateways:
+  - httpbin-gateway
+  hosts:
+  - httpbin.example.com
+  http:
+  - fault:
+      abort:
+        httpStatus: 400
+        percentage:
+          value: 50
+    timeout: 3s
+    match:
+    - uri:
+        prefix: /status
+    - uri:
+        prefix: /delay
+    - uri:
+        prefix: /html
+    route:
+    - destination:
+        host: httpbin
+        port:
+          number: 8000
