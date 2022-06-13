@@ -1,0 +1,14 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: authdenypolicy
+  namespace: bookinfo
+spec:
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["bar"]
+    to:
+    - operation:
+        methods: ["POST"]
