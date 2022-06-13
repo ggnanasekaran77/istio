@@ -9,9 +9,5 @@ kubectl apply -f vsvc-reviews.yaml
 end=$((SECONDS+120))
 
 while [ $SECONDS -lt $end ]; do
-    curl -ks -HHost:bookinfo.com http://34.87.99.92/productpage >/dev/null
+    curl -ks -HHost:bookinfo.com http://$(kubectl -n istio-system get svc istio-ingressgateway --output jsonpath='{.status.loadBalancer.ingress[0].ip}')/productpage >/dev/null
 done
-
-
-
-
