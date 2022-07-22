@@ -1,0 +1,26 @@
+safi_devops_users:
+  - name: "Gnanasekaran Gajendi"
+    email: "gnanasekaran.gajendi@advancegroup.com"
+    gcp_email: "ggnanasekaran77@gmail.com"
+    terraform_cloud:
+      teams:
+        - "env-dev"
+    gcp:
+      projects_iam:
+        - project: "safi-env-dev-tyk"
+          roles:
+            - "roles/viewer"
+        - project: "safi-sandbox-istio1"
+          roles:
+            - "roles/owner"
+  - name: "test user"
+    email: "test_user@advancegroup.com"
+    gcp_email: "test_user@advancegroup.com"
+    terraform_cloud:
+      teams:
+        - "env-dev"
+    gcp:
+      projects_iam:
+        - project: "safi-sandbox-istio1"
+          roles:
+            - "roles/viewer"
